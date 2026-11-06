@@ -96,7 +96,10 @@ export const onlinejobsph = {
       }
     }
 
-    const links = [...hrefs].slice(0, limits?.perSource ?? 50);
+    // Newest first (posting ids rise over time), for the same reason as the cap in index.mjs.
+    const links = [...hrefs]
+      .sort((a, b) => (Number(idFromHref(b)) || 0) - (Number(idFromHref(a)) || 0))
+      .slice(0, limits?.perSource ?? 50);
     const wantDetails = limits?.fetchDescriptions !== false;
     const budget = wantDetails ? (limits?.maxDetailFetches ?? 40) : 0;
 

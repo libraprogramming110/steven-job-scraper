@@ -44,6 +44,42 @@
         "research assistant"
       ],
       "enabled": true
+    },
+    {
+      "label": "english-tutoring",
+      "keywords": [
+        "english tutor",
+        "online english tutor",
+        "english teacher",
+        "online english teacher",
+        "kids english tutor",
+        "english tutor for kids",
+        "elementary english",
+        "esl tutor",
+        "esl teacher",
+        "online esl teacher",
+        "esl instructor",
+        "efl teacher",
+        "tefl",
+        "tesol",
+        "english language tutor",
+        "reading tutor",
+        "phonics",
+        "literacy tutor",
+        "grammar tutor",
+        "writing tutor",
+        "spoken english",
+        "conversational english",
+        "english coach",
+        "elementary tutor",
+        "primary school tutor",
+        "grade school tutor",
+        "kids tutor",
+        "online tutor",
+        "online teacher",
+        "homework help"
+      ],
+      "enabled": true
     }
   ],
   "filters": {
@@ -75,9 +111,9 @@
     "jobsPerMessage": 8
   },
   "limits": {
-    "perSource": 50,
+    "perSource": 100,
     "fetchDescriptions": true,
-    "maxDetailFetches": 40,
+    "maxDetailFetches": 100,
     "requestDelayMs": 300
   },
   "_hints": {

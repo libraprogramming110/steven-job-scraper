@@ -45,7 +45,11 @@ export async function runSources(sources, { keywords = [], limits = {} } = {}) {
       const startedAt = Date.now();
       try {
         const jobs = await source.fetch({ keywords, opts, limits });
-        const usable = (jobs || []).filter((j) => j && j.title && j.url);
+        // Newest first before the cap: in keyword order, the first few searches
+        // would fill it and later keywords would never be looked at.
+        const usable = (jobs || [])
+          .filter((j) => j && j.title && j.url)
+          .sort((a, b) => new Date(b.postedAt || 0) - new Date(a.postedAt || 0));
         return {
           id: source.id,
           label: source.label,
