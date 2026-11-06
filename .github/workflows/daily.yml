@@ -31,7 +31,19 @@ jobs:
         run: npm ci
 
       - name: Write Telegram config from secrets
-        run: echo "{\"token\":\"${{ secrets.TELEGRAM_TOKEN }}\",\"chatId\":\"${{ secrets.TELEGRAM_CHAT_ID }}\"}" > telegram.json
+        # Via env + JSON.stringify so a stray space, quote or line break in a
+        # pasted secret can't break the file; says which secret is empty.
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          node -e "
+            const token = (process.env.TELEGRAM_TOKEN || '').trim();
+            const chatId = (process.env.TELEGRAM_CHAT_ID || '').trim().replace(/^\"|\"$/g, '');
+            if (!token) console.log('::warning::TELEGRAM_TOKEN secret is empty or missing');
+            if (!chatId) console.log('::warning::TELEGRAM_CHAT_ID secret is empty or missing');
+            require('fs').writeFileSync('telegram.json', JSON.stringify({ token, chatId }));
+          "
 
       - name: Full sweep (all sources)
         run: node src/cli.mjs --all --digest
