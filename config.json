@@ -1,0 +1,94 @@
+{
+  "_comment": "Everything you control lives here. The code knows nothing about specific roles — edit this file, not src/.",
+  "searches": [
+    {
+      "label": "writing-editorial",
+      "keywords": [
+        "content writer",
+        "news writer",
+        "article writer",
+        "copywriter",
+        "copy editor",
+        "content editor",
+        "proofreader",
+        "journalist"
+      ],
+      "enabled": true
+    },
+    {
+      "label": "social-content",
+      "keywords": [
+        "social media assistant",
+        "social media manager",
+        "content coordinator"
+      ],
+      "enabled": true
+    },
+    {
+      "label": "clinical-admin",
+      "keywords": [
+        "medical virtual assistant",
+        "healthcare virtual assistant",
+        "mental health",
+        "medical scribe",
+        "clinical documentation",
+        "case manager"
+      ],
+      "enabled": true
+    },
+    {
+      "label": "va",
+      "keywords": [
+        "virtual assistant",
+        "administrative assistant",
+        "research assistant"
+      ],
+      "enabled": true
+    }
+  ],
+  "filters": {
+    "remoteOnly": true,
+    "employmentTypes": [
+      "part time",
+      "part-time"
+    ],
+    "excludeKeywords": [],
+    "minSalary": null,
+    "postedWithinDays": 30
+  },
+  "sources": {
+    "remoteok": true,
+    "remotive": true,
+    "jobicy": true,
+    "himalayas": true,
+    "arbeitnow": true,
+    "weworkremotely": true,
+    "workingnomads": true,
+    "jobstreet": true,
+    "kalibrr": true,
+    "onlinejobsph": true,
+    "remoterocketship": false,
+    "jobspresso": true
+  },
+  "notify": {
+    "enabled": true,
+    "jobsPerMessage": 8
+  },
+  "limits": {
+    "perSource": 50,
+    "fetchDescriptions": true,
+    "maxDetailFetches": 40,
+    "requestDelayMs": 300
+  },
+  "_hints": {
+    "searches": "Add as many as you like. `keywords` drive both remote-feed filtering and the search box on query sources.",
+    "employmentTypes": "Empty array = any. Put e.g. [\"internship\"] or [\"ojt\"] to narrow. Matched loosely against each posting's type/title.",
+    "remoteOnly": "false lets on-site roles through (mainly affects the PH sources).",
+    "excludeKeywords": "Any job whose title or description contains one of these is dropped.",
+    "minSalary": "Number in USD-ish terms, or null. Jobs with no parseable salary are always kept.",
+    "postedWithinDays": "null = no age limit. Jobs with no date are always kept.",
+    "perSource": "Cap on jobs taken from any single source per run.",
+    "fetchDescriptions": "OnlineJobs.PH needs one extra request per job to get its description. Set false to run faster with thinner data.",
+    "requestDelayMs": "Politeness delay between requests to the same host."
+  }
+}
